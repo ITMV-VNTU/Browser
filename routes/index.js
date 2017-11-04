@@ -11,6 +11,7 @@ router.use(function (req, res, next) {
 })
 
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })
 })
@@ -18,16 +19,28 @@ router.get('/', function (req, res, next) {
 router.post('/getissues', function (req, res) {
   var url = urlapi.parse(req.body.repositori_name)
   var urlres = 'https://api.github.com/repos' + url.pathname + '/labels'
-  console.log(urlres);
+
   // console.log(urlres)
   fetch(urlres)
     .then(function (response) {
       return response.json()
       .then(function (arr) {
-         
+        console.log(arr[0].color);
         res.render('getLabels',{data:arr})
       })
     })
 })
 
 module.exports = router
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.post('/', function(req, res){
+  fetch('https://api.github.com/repos/facebook/react/issues',{method:'GET'}).then(function(response) {
+  //res.send(response);
+  console.log(response)
+  })
+})
+module.exports = router;
+

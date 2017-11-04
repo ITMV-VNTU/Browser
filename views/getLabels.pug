@@ -3,8 +3,8 @@ extends layout
 block content
   
     div(id='main')
-        ul(in='lable_container')
+        ul(id='lable_container')
             each item in data
-                li
-                    div(data-url=data.url,style={'background':data.color},class='lable')
-                        p #{item.name}
+                li(data-url=item.url)
+                    - var color='#'+item.color                    
+                    span(class='lable lable-delault',style={'background':color}) #{item.name}

@@ -52,3 +52,14 @@ nav>ul>li{
 #form_container{
     margin: 30px 20px 20px 100px;
 }
+#lable_container>li{
+    list-style: none;
+    
+}
+#main{
+    width: 70%;
+    margin-left: 15%;
+}
+#lable_container{
+    padding-left: 0px;
+}
