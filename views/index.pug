@@ -1,24 +1,11 @@
 extends layout
 
 block content
-  nav
-    ul
-      li 
-        a(href="#") Home
-      li 
-        a(href="#") About
-      li 
-        a(href="#") Contact
-  div(id='form_container')
-    b(id='forlog') Put please you repository url
-    input(type="text" id='repositori_name') 
-    input(type="button" id='search_repo' value='search repositori' onClick = "reqRepository()")
-
+  
   div(id='main')
     div(id='labels_conteiner')
       div(id='header')
         h4 Labels
       div(id='label')
         ul(id='label_list')
-          li(id='label_list_element') 
-  script(src='/javascripts/index.js' crossorigin)
+          li(id='label_list_element')

@@ -7,5 +7,17 @@ html
   body
     header 
       p Issue browser
+    nav
+      ul
+        li 
+          a(href="#") Home
+        li 
+          a(href="#") About
+        li 
+          a(href="#") Contact
+    form(action="/getissues", method="POST",id='form_container',enctype="application/x-www-form-urlencoded")
+      b(id='forlog') Put please you repository url
+      input(type="text" name='repositori_name') 
+      input(type='submit' id='search_repo' value='search repositori')
     block content
     footer

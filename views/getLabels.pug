@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  
+    div(id='main')
+        ul(in='lable_container')
+            each item in data
+                li
+                    div(data-url=data.url,style={'background':data.color},class='lable')
+                        p #{item.name}
