@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
 /* Request GitHub API */
 router.post('/getissues', function (req, res) {
   var url = urlapi.parse(req.body.url)
-  var urlres = 'https://api.github.com/repos' + url.pathname + '/issues'
+  var urlres = 'https://api.github.com/repos' + url.pathname + '/labels'
   // console.log(urlres)
   fetch(urlres)
     .then(function (response) {
