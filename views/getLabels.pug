@@ -9,15 +9,17 @@ block content
         div(id='labels_conteiner')
             div
                 h3(class="reviews")
-                ul(in='lable_list' class="list-group")
-                    each item in data
-                        li(class="list-group-item")
-                            div(data-url=data.url,style={'background':data.color},class='lable')
-                                h4(class="media-heading text-uppercase reviews") Label type:
-                                    span(class="label label-default") #{item.type}
+                div(id='lable_list' class="list-group")
+                    each item,i in data
+                        div(class="panel panel-default")
+                            div(data-url=data.url,style={'background':data.color},class='panel-heading')
+                                - var numberOfColapse="#collapse"+(i+1)
+                                h4(class="panel-title") Label type:
+                                    a(data-toggle="collapse" href=numberOfColapse) #{item.type}
                                     span(class="badge" style='background:green') #{item.count_issues}
-                                div
-                                    ul(in='label_subtypelist' class="list-group")
+                                - var idColapse='collapse'+(i+1)
+                                div(id=idColapse,class="panel-collapse collapse")
+                                    ul(id='label_subtypelist' class="list-group")
                                         each i in item.subtype
                                             li(class="list-group-item")
                                                 a(href=i.url_st+'')
