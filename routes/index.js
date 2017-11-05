@@ -60,6 +60,8 @@ router.post('/getcomments', function (req, res) {
     })
 })
 
+
+
 /* create new Type of Label */
 function creatNewtype (type, el, issue) {
   var othertype = {

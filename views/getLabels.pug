@@ -7,28 +7,26 @@ block content
                 span(class="input-group-btn")
                     input(type='submit' id='search_com' value='Search comments' class="btn btn-secondary")
         div(id='labels_conteiner')
-            div
-                h3(class="reviews")
-                div(id='lable_list' class="list-group")
-                    each item,i in data
-                        div(class="panel panel-default")
-                            div(data-url=data.url,style={'background':data.color},class='panel-heading')
-                                - var numberOfColapse="#collapse"+(i+1)
-                                h4(class="panel-title") Label type:
-                                    a(data-toggle="collapse" href=numberOfColapse) #{item.type}
-                                    span(class="badge" style='background:green') #{item.count_issues}
-                                - var idColapse='collapse'+(i+1)
-                                div(id=idColapse,class="panel-collapse collapse")
-                                    ul(id='label_subtypelist' class="list-group")
-                                        each i in item.subtype
-                                            li(class="list-group-item")
-                                                a(href=i.url_st+'')
-                                                    span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
-                                                    span(class="badge" style='background:green') #{i.count}
-                                                        div
-                                                            ul(in='label_subtypelist_issue' class="list-group")
-                                                                each it in i.issues
-                                                                    li(class="list-group-item")
-                                                                        a(href=it.html_url+'') #{it.title}
-                                                                        each l in it.labels
-                                                                            span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
+            
+            div(id='lable_list' class="list-group")
+                each item,i in data
+                    div(class='group')
+                        div(class='accordion')
+                            h4(class="panel-title") Label type: #{item.type}
+                            span(class="badge" style='background:green') #{item.count_issues}                            
+                        div(class='panel')
+                            ul(id='label_subtypelist' class="list-group")
+                            each i in item.subtype
+                                li(class="list-group-item")
+                                    div(class='accordion')
+                                        a(href=i.url_st+'')
+                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
+                                        span(class="badge" style='background:green') #{i.count}
+                                    div(class='panel')                                                
+                                        ul(in='label_subtypelist_issue' class="list-group")
+                                            each it in i.issues
+                                                li(class="list-group-item")
+                                                    a(href=it.html_url+'') #{it.title}
+                                                    each l in it.labels
+                                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
+    script(src="javascripts/indexClient.js")
