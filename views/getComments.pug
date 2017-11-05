@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div(id='main')
+        div(id='comments_container')
+            div
+                h3(class="reviews") Comments about this repository
+            div
+                ul(id="comments_list" class="media-list")
+                    each item in data
+                        li
+                            a(class="pull-left" href=''+item.user.html_url)
+                                img(class="media-object img-circle" alt="profile" src=''+item.user.avatar_url style="width:64px; height:64px;")
+                            div(class="media-body")
+                                div(class="well well-lg")
+                                    h4(class="media-heading text-uppercase reviews") #{item.user.login}
+                                    p(class="media-comment") #{item.body}

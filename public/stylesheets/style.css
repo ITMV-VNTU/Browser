@@ -52,3 +52,12 @@ nav>ul>li{
 #form_container{
     margin: 30px 20px 20px 100px;
 }
+.label-default{
+    font-size:12pt;
+}
+.media-body { 
+    position: relative; 
+}
+.media-comment { 
+    margin-bottom: 20px; 
+}
