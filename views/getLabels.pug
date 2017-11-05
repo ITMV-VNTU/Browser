@@ -1,10 +1,21 @@
 extends layout
 
 block content
-  
     div(id='main')
-        ul(in='lable_container')
-            each item in data
-                li
-                    div(data-url=data.url,style={'background':data.color},class='lable')
-                        p #{item.name}
+        div(id='labels_conteiner')
+            div
+                h3(class="reviews")
+                ul(in='lable_list' class="list-group")
+                    each item in data
+                        li(class="list-group-item")
+                            div(data-url=data.url,style={'background':data.color},class='lable')
+                                h4(class="media-heading text-uppercase reviews") Label type:
+                                    span(class="label label-default") #{item.type}
+                                    span(class="badge" style='background:green') #{item.count_issues}
+                                div
+                                    ul(in='label_subtypelist' class="list-group")
+                                        each i in item.subtype
+                                            li(class="list-group-item")
+                                                a(href=i.url_st+'')
+                                                    span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
+                                                    span(class="badge" style='background:green') #{i.count}

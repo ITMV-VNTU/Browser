@@ -4,6 +4,7 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet",href="//fonts.googleapis.com/css?family=Oswald")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
   body
     header 
       p Issue browser
@@ -16,8 +17,12 @@ html
         li 
           a(href="#") Contact
     form(action="/getissues", method="POST",id='form_container',enctype="application/x-www-form-urlencoded")
-      b(id='forlog') Put please you repository url
-      input(type="text" name='repositori_name') 
-      input(type='submit' id='search_repo' value='search repositori')
+      div(class="alert alert-info")
+        strong Info!
+          b  Enter your repository url
+      div(class="input-group input-group-lg")
+        input(type="text" class="form-control" name='repositori_name' aria-describedby="basic-addon3")
+        span(class="input-group-btn")
+          input(type='submit' id='search_repo' value='Search repository' class="btn btn-secondary")
     block content
     footer
