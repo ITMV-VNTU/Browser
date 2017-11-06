@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    - var title=data.title + " #"+data.number
+    div(id="titleContainer")
+        a(href=data.html_url)
+            h1(id='titleOfIssue') #{title}
+        //span(class="badge" style='background-color:#'+data.labels.color) #{data.labels.name}
+    
+        span(class="badge" style='background:green;font-size:20px') #{data.state}
+        //span #{data.created_at}
+    
+    div(id='avatar')
+        a(class="pull-left" href=data.user.html_url)
+            - var login="@"+data.user.login
+            img(src=data.user.avatar_url, height='64' width='64' alt='login' class='media-object img-circle')
+        span(id=author) #{data.user.login} 
+    
+    div(class='issueBody')
+        pre(class="media-comment") #{data.body}

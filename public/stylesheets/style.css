@@ -96,3 +96,31 @@ div.panel {
 .list-group-item>span{
     color:black;
 }
+input.issueUrl{
+    display: none;
+}
+.tatleOfIssue{
+    margin-left: 100px;
+}
+.issueBody{
+    width: 60%;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+#avatar{
+    margin-left: 100px;
+    margin-top: 15px;
+    float: left;
+}
+#titleContainer{
+    margin-left: 100px;
+}
+#avatar>span{
+    font-family: oswald;
+    font-size: 25px;
+}
+#titleContainer>.badge{
+    background: green;
+    font-size: 20px;
+    margin-right: 15px;
+}
