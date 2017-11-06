@@ -97,8 +97,16 @@ div.panel {
 .list-group-item>span{
     color:black;
 }
-<<<<<<< HEAD
-input.issueUrl{
+.fi-container{
+    float: right;
+    padding-right: 10px;
+    margin: 10px;
+}
+.fi-container:hover{
+    background-color: #808080;
+    mix-blend-mode: multiply;
+} 
+.issueUrl{
     display: none;
 }
 .tatleOfIssue{
@@ -125,14 +133,4 @@ input.issueUrl{
     background: green;
     font-size: 20px;
     margin-right: 15px;
-=======
-.fi-container{
-    float: right;
-    padding-right: 10px;
-    margin: 10px;
-}
-.fi-container:hover{
-    background-color: #808080;
-    mix-blend-mode: multiply;
->>>>>>> 77a1ca63ba2afd17b84cfa4e8fcd61848def4bee
 }
