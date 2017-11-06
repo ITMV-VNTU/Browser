@@ -55,7 +55,7 @@ nav>ul>li{
 
 #labels_conteiner{
     margin-left: 100px;
-    width: 40%;
+    width: 75%;
 }
 .group>.accordion {
     background-color: #eee;
@@ -84,6 +84,7 @@ div.panel {
 }
 .list-group-item{
     padding: 0px;
+    font-size: 14pt;
 }
 .panel-title{
     float: left;
@@ -95,4 +96,13 @@ div.panel {
 }
 .list-group-item>span{
     color:black;
+}
+.fi-container{
+    float: right;
+    padding-right: 10px;
+    margin: 10px;
+}
+.fi-container:hover{
+    background-color: #808080;
+    mix-blend-mode: multiply;
 }
