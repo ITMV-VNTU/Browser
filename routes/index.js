@@ -51,7 +51,7 @@ router.post('/getissues', function (req, res) {
   urlrepository = req.body.repositori_name;
   console.log(urlrepository);
   // console.log(urlres)
-  fetch(urlres+'?page=1&per_page=100&state=all')
+  fetch(urlres+'?page=1&per_page=1000&state=all')
     .then(function (response) {
       return response.json()
       .then(function (arr) {
@@ -189,7 +189,7 @@ function parseIssues(issuearray){
 	feature_integration.mid = Math.ceil(mid);
 	feature_integration.value = Math.ceil(value);
 	console.log(count);
-	if(count===0){
+	if(count==0){
 		feature_integration.enable = false;
 		feature_integration.color = "#909090";
 	}

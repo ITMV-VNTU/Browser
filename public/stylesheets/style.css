@@ -50,12 +50,12 @@ nav>ul>li{
     font-family: 'Oswald', sans-serif
 }
 #form_container{
-    margin: 30px 20px 20px 100px;
+    margin: 30px 10% 20px 5%;
 }
 
 #labels_conteiner{
-    margin-left: 100px;
-    width: 75%;
+    margin-left: 5%;
+    width: 65%;
 }
 .group>.accordion {
     background-color: #eee;
@@ -104,5 +104,4 @@ div.panel {
 }
 .fi-container:hover{
     background-color: #808080;
-    mix-blend-mode: multiply;
 }

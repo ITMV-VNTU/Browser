@@ -24,7 +24,7 @@ block content
                     div(class='group')
                         div(class='accordion')
                             h4(class="panel-title") Label type: #{item.type}
-                            span(class="badge" style='background:green') #{item.count_issues}
+                            span(class="badge" style='float:right;background:green') #{item.count_issues}
                         div(class='panel')
                             ul(id='label_subtypelist' class="list-group")
                             each i in item.subtype
@@ -32,7 +32,7 @@ block content
                                     div(class='accordion')
                                         a(href=i.url_st+'')
                                         span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
-                                        span(class="badge" style='background:green') #{i.count}
+                                        span(class="badge" style='float:right;background:green') #{i.count}
                                     div(class='panel')                                                
                                         ul(in='label_subtypelist_issue' class="list-group")
                                             each it in i.issues
