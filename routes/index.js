@@ -15,47 +15,63 @@ var otherlabels = [];
 var comments = [];
 var urlrepository = "";
 
+var feature_integration = {
+		min:null,
+		max:null,
+		mid:null,
+	    value:null,
+	    color:null,
+	    enable: false
+	};
+
 function clear(){
-	var otherlabels = [];
-    var comments = [];
+	otherlabels = [];
+    comments = [];
+    feature_integration = {
+		min:null,
+		max:null,
+		mid:null,
+	    value:null,
+	    color:null,
+	    enable:false
+	};
 }
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   clear();
-  res.render('index', { title: 'Express' })
+  res.render('index', { title: 'GIB' })
 })
 /* Request GitHub API */
 router.post('/getissues', function (req, res) {
   clear();
-  var url = urlapi.parse(req.body.repositori_name)
-  var urlres = 'https://api.github.com/repos' + url.pathname + '/issues'
+  var url = urlapi.parse(req.body.repositori_name);
+  var urlres = 'https://api.github.com/repos' + url.pathname + '/issues';
   urlrepository = req.body.repositori_name;
   console.log(urlrepository);
   // console.log(urlres)
-  fetch(urlres+'?page=1&per_page=100')
+  fetch(urlres+'?page=1&per_page=100&state=all')
     .then(function (response) {
       return response.json()
       .then(function (arr) {
       	parseIssues(arr);
-      	//console.log(otherlabels);
-        res.render('getLabels',{data:otherlabels})
+        res.render('getLabels',{data:{otherlabels,feature_integration}, title:'GIB:issues'});
       })
     })
 })
 
 /*Comments request*/
 router.post('/getcomments', function (req, res) {
-  var url = urlapi.parse(urlrepository)
-  var urlres = 'https://api.github.com/repos' + url.pathname + '/comments'
+  var url = urlapi.parse(urlrepository);
+  var urlres = 'https://api.github.com/repos' + url.pathname + '/pulls/comments';
   console.log("comments");
   fetch(urlres)
     .then(function (response) {
       return response.json()
       .then(function (arr) {
       	//console.log(arr);
-        res.render('getComments',{data:arr})
+        res.render('getComments',{data:arr, title:'GIB:comments'});
       })
     })
 })
@@ -138,10 +154,65 @@ function parseLabels (labelsarray, issue) {
 }
 
 function parseIssues(issuearray){
+    /* FI variables */ 
+  var min = 0;
+  var max = 0;
+  var summ = 0;
+  var count = 0;
+  var mid = 0;
+  var value = 0;
+  var f = false;
   issuearray.map(function(el){
+    
     parseLabels(el.labels, el);
+
+    /* Found Feature integration*/
+    if(el.closed_at===null);
+    else{
+			var r = (Date.parse(el.closed_at)-Date.parse(el.created_at))/ (1000*60*60*24);
+			if(!f){
+				min = r;
+				f=true;
+			}
+			else{
+				if(min>r) min = r;
+			} 
+			if(max<r) max = r;
+			summ+=r;
+			count++;
+		}
   });
+    mid = (summ/count);
+	value = 100 - (mid*100)/max;
+	feature_integration.min = Math.ceil(min);
+	feature_integration.max = Math.ceil(max);
+	feature_integration.mid = Math.ceil(mid);
+	feature_integration.value = Math.ceil(value);
+	console.log(count);
+	if(count===0){
+		feature_integration.enable = false;
+		feature_integration.color = "#909090";
+	}
+	else {
+		feature_integration.enable = true;
+		feature_integration.color = chooseColorForFI(value);
+	}
 }
 
+/* Color FI functions*/ 
+function chooseColorForFI(value){
+	var g = Math.ceil((255*value)/100);
+	var r = 255 - g;
+	return rgbToHex(r,g,0);
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
 module.exports = router

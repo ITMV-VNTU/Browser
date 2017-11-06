@@ -11,6 +11,7 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "express-formidable": "^1.0.0",
+    "express-query-date": "^1.1.0",
     "morgan": "~1.9.0",
     "node-fetch": "^1.7.3",
     "pug": "2.0.0-beta11",
