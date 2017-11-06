@@ -37,7 +37,9 @@ block content
                                         ul(in='label_subtypelist_issue' class="list-group")
                                             each it in i.issues
                                                 li(class="list-group-item")
-                                                    a(href=it.html_url+'') #{it.title}
-                                                    each l in it.labels
-                                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
+                                                    form(action="/getIssue", method="POST",id='form_get_issue',enctype="application/x-www-form-urlencoded")
+                                                        input(name='issueUrl' class="issueUrl" type='text' value=it.url ) 
+                                                        a(class='get_issue' dataurl=it.url) #{it.title}
+                                                each l in it.labels
+                                                    span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
     script(src="javascripts/indexClient.js")

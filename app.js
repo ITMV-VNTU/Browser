@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var dateParser = require('express-query-date');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var get_issue=require('./routes/get_issue');
 
 global.app = module.exports = express();
 //var multipart = require('connect-multiparty');
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/', get_issue);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
