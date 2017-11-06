@@ -15,9 +15,22 @@ var otherlabels = [];
 var comments = [];
 var urlrepository = "";
 
+var feature_integration = {
+		min:null,
+		max:null,
+		mid:null,
+	    value:null
+	};
+
 function clear(){
 	var otherlabels = [];
     var comments = [];
+    feature_integration = {
+		min:null,
+		max:null,
+		mid:null,
+	    value:null
+	};
 }
 
 
@@ -34,12 +47,12 @@ router.post('/getissues', function (req, res) {
   urlrepository = req.body.repositori_name;
   console.log(urlrepository);
   // console.log(urlres)
-  fetch(urlres+'?page=1&per_page=100')
+  fetch(urlres+'?page=1&per_page=100&state=all')
     .then(function (response) {
       return response.json()
       .then(function (arr) {
       	parseIssues(arr);
-      	//console.log(otherlabels);
+      	console.log(feature_integration);
         res.render('getLabels',{data:otherlabels})
       })
     })
@@ -48,7 +61,7 @@ router.post('/getissues', function (req, res) {
 /*Comments request*/
 router.post('/getcomments', function (req, res) {
   var url = urlapi.parse(urlrepository)
-  var urlres = 'https://api.github.com/repos' + url.pathname + '/comments'
+  var urlres = 'https://api.github.com/repos' + url.pathname + '/pulls/comments'
   console.log("comments");
   fetch(urlres)
     .then(function (response) {
@@ -136,10 +149,39 @@ function parseLabels (labelsarray, issue) {
 }
 
 function parseIssues(issuearray){
+    /* FI variables */ 
+  var min = 0;
+  var max = 0;
+  var summ = 0;
+  var count = 0;
+  var mid = 0;
+  var value = 0;
+  var f = false;
   issuearray.map(function(el){
     parseLabels(el.labels, el);
-  });
-}
 
+    /* Found Feature integration*/
+    if(el.closed_at===null) console.log('null');
+    else{
+			var r = (Date.parse(el.closed_at)-Date.parse(el.created_at))/ (1000*60*60*24);
+			if(!f){
+				min = r;
+				f=true;
+			}
+			else{
+				if(min>r) min = r;
+			} 
+			if(max<r) max = r;
+			summ+=r;
+			count++;
+		}
+  });
+    mid = (summ/count);
+	value = 100 - (mid*100)/max;
+	feature_integration.min = Math.ceil(min);
+	feature_integration.max = Math.ceil(max);
+	feature_integration.mid = Math.ceil(mid);
+	feature_integration.value = Math.ceil(value);
+}
 
 module.exports = router
