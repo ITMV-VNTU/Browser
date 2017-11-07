@@ -11,19 +11,30 @@ html
     meta(charset="UTF-8")
   body
     header 
-      p GitHub Issue Browser
-    nav
-      ul
-        li 
-          a(href="#") Home
-        li 
-          a(href="#") About
-        li 
-          a(href="#") Contact
+      nav(class="navbar navbar-default")
+        div(class="container-fluid")
+          div(class="navbar-header")
+            a(class="navbar-brand")
+              img(alt="Brand" src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" style="width:92px; height:92px;")
+          h1(class="page-header") GitHub Issue Browser
     form(action="/getissues", method="POST",id='form_container',enctype="application/x-www-form-urlencoded")
-      div(class="alert alert-info")
-        strong Info!
-          b  Enter your repository url
+      - if(!data.check.notnull)
+          div(class="alert alert-danger")
+            strong Danger!
+              b  Url can't be null
+      - else 
+        - if(!data.check.gh_found)
+            div(class="alert alert-warning")
+              strong Warning!
+                b  Something wrong check you url
+        - else if(data.check.gh_limit)
+            div(class="alert alert-warning")
+              strong Warning!
+                b  GitHub rate limit exceeded
+        - else
+            div(class="alert alert-info")
+              strong Info!
+                b  Put your repository url
       div(class="input-group input-group-lg")
         input(type="text" class="form-control" name='repositori_name' aria-describedby="basic-addon3")
         span(class="input-group-btn")
