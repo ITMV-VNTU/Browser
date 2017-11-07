@@ -39,7 +39,6 @@ header{
 }
 
 #labels_conteiner{
-    margin-left: 5%;
     width: 65%;
 }
 .group>.accordion {
@@ -118,7 +117,6 @@ div.panel {
     font-size: 20px;
     margin-right: 15px;
 }
-<<<<<<< HEAD
 * {
     box-sizing: border-box;
 }
@@ -141,7 +139,10 @@ div.panel {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    border: 1px solid red;
+    
+}
+.row{
+    padding-left: 100px;
 }
 .row::after {
     content: "";
@@ -153,26 +154,8 @@ div.panel {
     [class*="col-"] {
         width: 100%;
     }
-=======
-#comments_container{
-    margin-right: 10%;
-    margin-left: 5%;
-}
-.navbar-brand{
-   width:92px; 
-   height:92px; 
-}
-.page-header{
-    font-size: 44pt; 
-    position:relative; 
-    text-align:center; 
-    color:#404040;
-    font-family: oswald sans-serif;
-}
-.navbar-default{
-    background: -webkit-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(80,80,80,0.3), rgba(169,169,169,0.3)); /* Standard syntax */
->>>>>>> b3bed2e3d82bfa8098ee0c05d04fc75b5e6c8283
+    
+    [class='row']{
+        padding: 10px;
+    }
 }
