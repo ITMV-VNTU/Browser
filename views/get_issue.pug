@@ -18,8 +18,9 @@ block content
         span(id=author) #{data.dat.user.login} 
     div(class='row')
         div(class='col-12')
-            pre(class="media-comment") !{data.dat.body}
-    div
+      
+            div !{data.dat.body}
+        div
         ul(id="comments_list" class="media-list")
             each item in data.comments
                 li
