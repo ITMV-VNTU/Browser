@@ -3,8 +3,8 @@
 
 # Команда: ITMV
 # Учасники:
-  url: https://github.com/MiroslavDerevianko
-  url: https://github.com/vitalii43
+  - url: https://github.com/MiroslavDerevianko
+  - url: https://github.com/vitalii43
 
 # Heroku: https://githubissuesbrowser.herokuapp.com
 
