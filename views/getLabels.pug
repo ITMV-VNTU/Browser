@@ -6,40 +6,41 @@ block content
             div(class="input-group input-group-lg")
                 span(class="input-group-btn")
                     input(type='submit' id='search_com' value='Search comments' class="btn btn-secondary")
-        div(class="fi-container" style="background-color:"+data.feature_integration.color)
-            div(class="card" style="width: 20rem;")
-                div(class="card-block")
-                    div(class="panel-heading")
-                        - if (!data.feature_integration.enable)
-                            h3(class="cars-title") NO FI Ration in this repository
-                        - else
-                            h3(class="cars-title") FI Ratio: #{data.feature_integration.value} %
-                            p(class="card-text") 
-                                p Ussually it takes #{data.feature_integration.mid} days to integrate feature for this repository
-                                p Fastest issue #{data.feature_integration.min}
-                                p Longest issue #{data.feature_integration.max}
-        div(id='labels_conteiner')
-            div(id='lable_list' class="list-group")
-                each item,i in data.otherlabels
-                    div(class='group')
-                        div(class='accordion')
-                            h4(class="panel-title") Label type: #{item.type}
-                            span(class="badge" style='float:right;background:green') #{item.count_issues}
-                        div(class='panel')
-                            ul(id='label_subtypelist' class="list-group")
-                            each i in item.subtype
-                                li(class="list-group-item")
-                                    div(class='accordion')
-                                        a(href=i.url_st+'')
-                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
-                                        span(class="badge" style='float:right;background:green') #{i.count}
-                                    div(class='panel')                                                
-                                        ul(in='label_subtypelist_issue' class="list-group")
-                                            each it in i.issues
-                                                li(class="list-group-item")
-                                                    form(action="/getIssue", method="POST",id='form_get_issue',enctype="application/x-www-form-urlencoded")
-                                                        input(name='issueUrl' class="issueUrl" type='text' value=it.url ) 
-                                                        a(class='get_issue' dataurl=it.url) #{it.title}
-                                                each l in it.labels
-                                                    span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
+        div(class='row')
+            div(class='col-3' class="fi-container" style="background-color:"+data.feature_integration.color)
+                div(class="card" style="width: 20rem;")
+                    div(class="card-block")
+                        div(class="panel-heading")
+                            - if (!data.feature_integration.enable)
+                                h3(class="cars-title") NO FI Ration in this repository
+                            - else
+                                h3(class="cars-title") FI Ratio: #{data.feature_integration.value} %
+                                p(class="card-text") 
+                                    p Ussually it takes #{data.feature_integration.mid} days to integrate feature for this repository
+                                    p Fastest issue #{data.feature_integration.min}
+                                    p Longest issue #{data.feature_integration.max}
+            div(class='col-8' id='labels_conteiner' class=) 
+                div(id='lable_list' class="list-group")
+                    each item,i in data.otherlabels
+                        div(class='group')
+                            div(class='accordion')
+                                h4(class="panel-title") Label type: #{item.type}
+                                span(class="badge" style='float:right;background:green') #{item.count_issues}
+                            div(class='panel')
+                                ul(id='label_subtypelist' class="list-group")
+                                each i in item.subtype
+                                    li(class="list-group-item")
+                                        div(class='accordion')
+                                            a(href=i.url_st+'')
+                                            span(class="label label-default" style='background-color:#'+i.obj.color) #{i.obj.name}
+                                            span(class="badge" style='float:right;background:green') #{i.count}
+                                        div(class='panel')                                                
+                                            ul(in='label_subtypelist_issue' class="list-group")
+                                                each it in i.issues
+                                                    li(class="list-group-item")
+                                                        form(action="/getIssue", method="POST",id='form_get_issue',enctype="application/x-www-form-urlencoded")
+                                                            input(name='issueUrl' class="issueUrl" type='text' value=it.url ) 
+                                                            a(class='get_issue' dataurl=it.url) #{it.title}
+                                                    each l in it.labels
+                                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
     script(src="javascripts/indexClient.js")
