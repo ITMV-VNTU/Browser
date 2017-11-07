@@ -2,6 +2,8 @@ body {
   padding: 0px;
   margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  //background-image: url(http://anywalls.com/images/201211/anywalls.com_39173.jpg);
+  //background-attachment: fixed;
 }
 a {
   color: rgb(143, 145, 146);
@@ -29,26 +31,9 @@ input[type="text"] {
 }
 header{
 	width: 100%;
-    height: 43px;
-    background: #b3b3b3;
+    height: 5%;
 }
-header >p{
-    margin: 0px;
-    padding: 0px;
-    font-family: oswald sans-serif;
-    font-size: 30px;
-    margin-left: 30px  
-}
-nav>ul{
-    margin: 0px ;
-    list-style: none;
-    text-align: center;
-}
-nav>ul>li{
-    margin: 0px 10px 0px 10px;
-    display: inline-block;
-    font-family: 'Oswald', sans-serif
-}
+
 #form_container{
     margin: 30px 10% 20px 5%;
 }
@@ -68,6 +53,7 @@ nav>ul>li{
     outline: none;
     font-size: 15px;
     transition: 0.4s;
+    padding-bottom: 33px;
 }
 
 .group>.accordion.active, .group>.accordion:hover {
@@ -109,20 +95,19 @@ div.panel {
     display: none;
 }
 .tatleOfIssue{
-    margin-left: 100px;
+    margin-left: 10%;
 }
 .issueBody{
     width: 60%;
-    margin-left: 100px;
     margin-top: 100px;
 }
 #avatar{
-    margin-left: 100px;
     margin-top: 15px;
     float: left;
 }
-#titleContainer{
-    margin-left: 100px;
+#issue_container{
+    margin-left: 10%;
+    margin-right: 20%;
 }
 #avatar>span{
     font-family: oswald;
@@ -132,4 +117,25 @@ div.panel {
     background: green;
     font-size: 20px;
     margin-right: 15px;
+}
+#comments_container{
+    margin-right: 10%;
+    margin-left: 5%;
+}
+.navbar-brand{
+   width:92px; 
+   height:92px; 
+}
+.page-header{
+    font-size: 44pt; 
+    position:relative; 
+    text-align:center; 
+    color:#404040;
+    font-family: oswald sans-serif;
+}
+.navbar-default{
+    background: -webkit-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(80,80,80,0.2), rgba(169,169,169,0.2)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(80,80,80,0.3), rgba(169,169,169,0.3)); /* Standard syntax */
 }

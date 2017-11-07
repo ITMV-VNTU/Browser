@@ -15,6 +15,12 @@ var otherlabels = [];
 var comments = [];
 var urlrepository = "";
 
+var check = {
+	notnull:true,
+	gh_found:true,
+	gh_limit:false
+}
+
 var feature_integration = {
 		min:null,
 		max:null,
@@ -37,32 +43,62 @@ function clear(){
 	};
 }
 
+function clearCheck(){
+	check = {
+	    notnull:true,
+	    gh_found:true,
+	    gh_limit:false
+	};
+}
+
+/*Check Url*/
+function checkUrl(url, res){
+	if(url===null){
+		check.notnull = false;
+		res.render('index', { title: 'GIB', data:{check}});
+	}
+	else{
+		var urlres = 'https://api.github.com/repos' + url.pathname + '/issues';
+      fetch(urlres+'?page=1&per_page=1000&state=all')
+        .then(function (response) {
+          return response.json()
+          .then(function (arr) {
+          	console.log(arr);
+          	if(arr.message=="Not Found"){
+          		check.gh_found=false;
+          		res.render('index', { title: 'GIB', data:{check}});
+          	}
+          	/*else if(arr.message.indexOf("API rate limit exceeded")!==-1){
+          		check.gh_limit=true;
+          		res.render('index', { title: 'GIB', data:{check}});
+          	}*/
+          	else{
+          		parseIssues(arr);
+                res.render('getLabels',{data:{otherlabels,feature_integration,check}, title:'GIB:issues'});
+          	}
+          });
+        });
+	}
+}
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   clear();
-  res.render('index', { title: 'GIB' })
+  clearCheck();
+  res.render('index', { title: 'GIB', data:{check}});
 })
 /* Request GitHub API */
 router.post('/getissues', function (req, res) {
   clear();
+  clearCheck();
   var url = urlapi.parse(req.body.repositori_name);
-  var urlres = 'https://api.github.com/repos' + url.pathname + '/issues';
   urlrepository = req.body.repositori_name;
-  console.log(urlrepository);
-  // console.log(urlres)
-  fetch(urlres+'?page=1&per_page=1000&state=all')
-    .then(function (response) {
-      return response.json()
-      .then(function (arr) {
-      	parseIssues(arr);
-        res.render('getLabels',{data:{otherlabels,feature_integration}, title:'GIB:issues'});
-      })
-    })
+  checkUrl(url, res);
 })
 
 /*Comments request*/
 router.post('/getcomments', function (req, res) {
+  clearCheck();
   var url = urlapi.parse(urlrepository);
   var urlres = 'https://api.github.com/repos' + url.pathname + '/pulls/comments';
   console.log("comments");
@@ -70,13 +106,31 @@ router.post('/getcomments', function (req, res) {
     .then(function (response) {
       return response.json()
       .then(function (arr) {
-      	//console.log(arr);
-        res.render('getComments',{data:arr, title:'GIB:comments'});
+        res.render('getComments',{data:{arr, check}, title:'GIB:comments'});
       })
     })
 })
-
-
+/* Get one issue */
+router.post('/getIssue', function(req, res) {
+  clearCheck();
+  var url = urlapi.parse(req.body.issueUrl)
+  var urlres = 'https://api.github.com' + url.pathname;
+  urlIssue = req.body.issueUrl;
+   //console.log(urlres)
+  fetch(urlres)
+    .then(function (response) {
+      return response.json()
+      .then(function (dat) {
+      	fetch(dat.comments_url)
+      	.then(function (ress){
+      		return ress.json()
+      		.then(function(comments){
+      			res.render('get_issue',{data:{dat, check, comments}, title:'GIB:issue'});
+      		})
+      	})
+      })
+    })
+});
 
 /* create new Type of Label */
 function creatNewtype (type, el, issue) {

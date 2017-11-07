@@ -1,20 +1,31 @@
 extends layout
 
 block content
-    - var title=data.title + " #"+data.number
+  div(id="issue_container")
+    - var title=data.dat.title + " #"+data.dat.number
     div(id="titleContainer")
-        a(href=data.html_url)
+        a(href=data.dat.html_url)
             h1(id='titleOfIssue') #{title}
-        //span(class="badge" style='background-color:#'+data.labels.color) #{data.labels.name}
+        //span(class="badge" style='background-color:#'+data.dat.labels.color) #{data.dat.labels.name}
     
-        span(class="badge" style='background:green;font-size:20px') #{data.state}
-        //span #{data.created_at}
+        span(class="badge" style='background:green;font-size:20px') #{data.dat.state}
+        //span #{data.dat.created_at}
     
     div(id='avatar')
-        a(class="pull-left" href=data.user.html_url)
-            - var login="@"+data.user.login
-            img(src=data.user.avatar_url, height='64' width='64' alt='login' class='media-object img-circle')
-        span(id=author) #{data.user.login} 
+        a(class="pull-left" href=data.dat.user.html_url)
+            - var login="@"+data.dat.user.login
+            img(src=data.dat.user.avatar_url, height='64' width='64' alt='login' class='media-object img-circle')
+        span(id=author) #{data.dat.user.login} 
     
     div(class='issueBody')
-        pre(class="media-comment") #{data.body}
+        pre(class="media-comment") #{data.dat.body}
+    div
+        ul(id="comments_list" class="media-list")
+            each item in data.comments
+                li
+                    a(class="pull-left" href=''+item.user.html_url)
+                        img(class="media-object img-circle" alt="profile" src=''+item.user.avatar_url style="width:64px; height:64px;")
+                    div(class="media-body")
+                        div(class="well well-lg")
+                            h4(class="media-heading text-uppercase reviews") #{item.user.login}
+                            p(class="media-comment") #{item.body}

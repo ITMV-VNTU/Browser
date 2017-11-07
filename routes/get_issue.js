@@ -5,8 +5,7 @@ var urlencode = require('urlencode');
 
 var router = express.Router();
 /* GET users listing. */
-router.post('/getIssue', function(req, res, next) {
-
+/*router.post('/getIssue', function(req, res, next) {
 
   var url = urlapi.parse(req.body.issueUrl)
   var urlres = 'https://api.github.com' + url.pathname;
@@ -17,10 +16,13 @@ router.post('/getIssue', function(req, res, next) {
     .then(function (response) {
       return response.json()
       .then(function (dat) {
-     // console.log(dat);
-       res.render('get_issue',{data:dat})
+      var check = {
+            notnull:true,
+            gh_found:true
+       }
+        res.render('get_issue',{data:{dat, check}, title:'GIB:issue'});
       })
     })
-});
+});*/
 
 module.exports = router;
