@@ -160,4 +160,7 @@ div.panel {
     [class*='list-group-item']{
         font-size: smaller;
     }
+    [id='titleOfIssue']{
+        font-size: medium;
+    }
 }

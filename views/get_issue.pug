@@ -16,9 +16,9 @@ block content
             - var login="@"+data.dat.user.login
             img(src=data.dat.user.avatar_url, height='64' width='64' alt='login' class='media-object img-circle')
         span(id=author) #{data.dat.user.login} 
-    
-    div(class='issueBody')
-        pre(class="media-comment") #{data.dat.body}
+    div(class='row')
+        div(class='col-7')
+            pre(class="media-comment") #{data.dat.body}
     div
         ul(id="comments_list" class="media-list")
             each item in data.comments
