@@ -38,9 +38,7 @@ header{
     margin: 30px 10% 20px 5%;
 }
 
-#labels_conteiner{
-    width: 65%;
-}
+
 .group>.accordion {
     background-color: #eee;
     color: #444;
@@ -83,13 +81,9 @@ div.panel {
     color:black;
 }
 .fi-container{
-    float: right;
-    padding-right: 10px;
-    margin: 10px;
+
 }
-.fi-container:hover{
-    background-color: #808080;
-} 
+
 .issueUrl{
     display: none;
 }
@@ -125,7 +119,7 @@ div.panel {
 }
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
+.col-3 {width: 20%;}
 .col-4 {width: 33.33%;}
 .col-5 {width: 41.66%;}
 .col-6 {width: 50%;}
@@ -142,7 +136,7 @@ div.panel {
     
 }
 .row{
-    padding-left: 100px;
+    padding-left: 5%;
 }
 .row::after {
     content: "";
@@ -158,4 +152,38 @@ div.panel {
     [class='row']{
         padding: 10px;
     }
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 10px 10px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+
+}
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+    mix-blend-mode: multiply;
+}
+.card-block:hover {
+    background: #c0c0c0;
+}
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
 }
