@@ -1,12 +1,12 @@
 ## ITRevolution 2017
 ## GitHub issue browser
 
-# Команда: ITMV
-# Учасники:
+Команда: ITMV
+Учасники:
   - url: https://github.com/MiroslavDerevianko
   - url: https://github.com/vitalii43
 
-# Heroku: https://githubissuesbrowser.herokuapp.com
+Heroku: https://githubissuesbrowser.herokuapp.com
 
 
 -  Встановлення 
