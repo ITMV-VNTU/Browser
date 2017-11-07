@@ -41,4 +41,4 @@ Heroku: https://githubissuesbrowser.herokuapp.com
 
    Якщо користувач вводить некоректні дані аплікація повідомляє про це
    
-![alt text](https://github.com/ITMV-VNTU/Browser/blob/master/Screenshoots/Screenshot_5.png)
+![alt text](https://github.com/ITMV-VNTU/Browser/blob/master/Screenshoots/Screenshot_6.png)
