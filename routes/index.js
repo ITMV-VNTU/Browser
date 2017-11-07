@@ -63,15 +63,14 @@ function checkUrl(url, res){
         .then(function (response) {
           return response.json()
           .then(function (arr) {
-          	console.log(arr);
           	if(arr.message=="Not Found"){
           		check.gh_found=false;
           		res.render('index', { title: 'GIB', data:{check}});
           	}
-          	/*else if(arr.message.indexOf("API rate limit exceeded")!==-1){
+          	else if(!arr.message===undefined&&arr.message.indexOf("API rate limit exceeded")!=-1){
           		check.gh_limit=true;
           		res.render('index', { title: 'GIB', data:{check}});
-          	}*/
+          	}
           	else{
           		parseIssues(arr);
                 res.render('getLabels',{data:{otherlabels,feature_integration,check}, title:'GIB:issues'});
@@ -178,7 +177,6 @@ function searchType (type, el, issue) {
           elll.count++;
           ell.count_issues++;
           elll.issues.push(issue);
-          //console.log(el.name);
         }
       });
       if(!fl){
@@ -194,17 +192,28 @@ function searchType (type, el, issue) {
 
 /* Parse all labels (default & users) */
 function parseLabels (labelsarray, issue) {
-  labelsarray.map(function (el) {
-      var index = el.name.indexOf(':')
-      var type = null
-      if (index !== -1) {
-        type = el.name.substring(0, index)
-      } else {
-        type = el.name
-      }
-      searchType(type, el, issue);
-      //console.log(otherlabels)
-  });
+  
+    if(labelsarray.length === 0){
+    	var type = "No labels";
+    	var el = {
+    		name: "No labels",
+    		color: "0055ff"    	
+    	}
+    	searchType(type, el, issue);
+    }
+    else{
+    	labelsarray.map(function (el) {
+	      var index = el.name.indexOf(':')
+	      var type = null
+	      if (index !== -1) {
+	        type = el.name.substring(0, index)
+	      } else {
+	        type = el.name
+	      }
+	      searchType(type, el, issue);
+	      //console.log(otherlabels)
+	  });
+    }
 }
 
 function parseIssues(issuearray){
