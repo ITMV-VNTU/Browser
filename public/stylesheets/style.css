@@ -69,7 +69,7 @@ div.panel {
 }
 .list-group-item{
     padding: 0px;
-    font-size: 14pt;
+    
 }
 .panel-title{
     float: left;
@@ -95,6 +95,9 @@ div.panel {
 }
 .tatleOfIssue{
     margin-left: 10%;
+}
+.label label-default{
+    margin-right: 2px;
 }
 .issueBody{
     width: 60%;
@@ -163,4 +166,7 @@ div.panel {
     [id='titleOfIssue']{
         font-size: medium;
     }
+}
+span.label{
+    color:black;
 }

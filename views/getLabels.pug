@@ -41,6 +41,7 @@ block content
                                                         form(action="/getIssue", method="POST",id='form_get_issue',enctype="application/x-www-form-urlencoded")
                                                             input(name='issueUrl' class="issueUrl" type='text' value=it.url ) 
                                                             a(class='get_issue' dataurl=it.url) #{it.title}
-                                                    each l in it.labels
-                                                        span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
+                                                        div
+                                                            each l in it.labels
+                                                                span(class="label label-default" style='background-color:#'+i.obj.color) #{l.name}
     script(src="javascripts/indexClient.js")
