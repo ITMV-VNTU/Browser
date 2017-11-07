@@ -153,9 +153,11 @@ div.panel {
     /* For mobile phones: */
     [class*="col-"] {
         width: 100%;
-    }
-    
+    }    
     [class='row']{
         padding: 10px;
+    }
+    [class*='list-group-item']{
+        font-size: smaller;
     }
 }
