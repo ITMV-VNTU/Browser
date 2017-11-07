@@ -38,7 +38,6 @@ header{
     margin: 30px 10% 20px 5%;
 }
 
-
 .group>.accordion {
     background-color: #eee;
     color: #444;
@@ -147,11 +146,11 @@ div.panel {
     /* For mobile phones: */
     [class*="col-"] {
         width: 100%;
-    }
-    
+    }    
     [class='row']{
         padding: 10px;
     }
+<<<<<<< HEAD
 }
 
 .card {
@@ -186,4 +185,12 @@ div.panel {
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
+=======
+    [class*='list-group-item']{
+        font-size: smaller;
+    }
+    [id='titleOfIssue']{
+        font-size: medium;
+    }
+>>>>>>> e5d71a512bfeab2a8de223382688c3c2d4e89613
 }
