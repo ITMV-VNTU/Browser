@@ -2,7 +2,7 @@ var express = require('express')
 var fetch = require('node-fetch')
 var urlapi = require('url')
 var urlencode = require('urlencode');
-
+var ghm = require("github-flavored-markdown");
 var router = express.Router()
 
 router.use(function (req, res, next) {
@@ -105,6 +105,9 @@ router.post('/getcomments', function (req, res) {
     .then(function (response) {
       return response.json()
       .then(function (arr) {
+        for(var i=0;i<arr.length;i++){
+          arr[i].body = ghm.parse(arr[i].body);
+        }
         res.render('getComments',{data:{arr, check}, title:'GIB:comments'});
       })
     })
@@ -124,6 +127,10 @@ router.post('/getIssue', function(req, res) {
       	.then(function (ress){
       		return ress.json()
       		.then(function(comments){
+            dat.body = ghm.parse(dat.body);
+            comments.map(function(el){
+              el.body = ghm.parse(el.body)
+            })
       			res.render('get_issue',{data:{dat, check, comments}, title:'GIB:issue'});
       		})
       	})

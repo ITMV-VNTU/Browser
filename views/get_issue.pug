@@ -17,8 +17,8 @@ block content
             img(src=data.dat.user.avatar_url, height='64' width='64' alt='login' class='media-object img-circle')
         span(id=author) #{data.dat.user.login} 
     div(class='row')
-        div(class='col-7')
-            pre(class="media-comment") #{data.dat.body}
+        div(class='col-12')
+            pre(class="media-comment") !{data.dat.body}
     div
         ul(id="comments_list" class="media-list")
             each item in data.comments
@@ -28,4 +28,4 @@ block content
                     div(class="media-body")
                         div(class="well well-lg")
                             h4(class="media-heading text-uppercase reviews") #{item.user.login}
-                            p(class="media-comment") #{item.body}
+                            p(class="media-comment") !{item.body}
