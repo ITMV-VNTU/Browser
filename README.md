@@ -19,6 +19,7 @@ Heroku: https://githubissuesbrowser.herokuapp.com
    2. Запуск у режимі розробника DEBAG=browser:* npm start
 
 - Огляд
+   
    Початкове меню аплікації
    
 ![alt text](https://github.com/ITMV-VNTU/Browser/blob/master/Screenshoots/Screenshot_1.png)
