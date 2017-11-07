@@ -69,7 +69,6 @@ div.panel {
     font-size: 14pt;
 }
 .panel-title{
-    float: left;
     font-size: x-large;
     font-family: oswald;
 }
@@ -131,7 +130,7 @@ div.panel {
 
 [class*="col-"] {
     float: left;
-    padding: 15px;
+    padding: 5px;
     
 }
 .row{
@@ -150,7 +149,6 @@ div.panel {
     [class='row']{
         padding: 10px;
     }
-<<<<<<< HEAD
 }
 
 .card {
@@ -160,6 +158,7 @@ div.panel {
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 10px 10px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+
 
 }
 .card-block {
@@ -185,12 +184,10 @@ div.panel {
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
-=======
     [class*='list-group-item']{
         font-size: smaller;
     }
     [id='titleOfIssue']{
         font-size: medium;
     }
->>>>>>> e5d71a512bfeab2a8de223382688c3c2d4e89613
 }
