@@ -36,7 +36,7 @@ Heroku: https://githubissuesbrowser.herokuapp.com
    
 ![alt text](https://github.com/ITMV-VNTU/Browser/blob/master/Screenshoots/Screenshot_4.png)
   
-   Існує можливість загальну кількість коментарів про репозиторій натиснувши на кнопку пошуку коментарів
+   Існує можливість отримати загальну кількість коментарів про репозиторій натиснувши на кнопку пошуку коментарів
    
 ![alt text](https://github.com/ITMV-VNTU/Browser/blob/master/Screenshoots/Screenshot_5.png)
 
